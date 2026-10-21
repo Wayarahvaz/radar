@@ -1,14 +1,20 @@
 from datetime import datetime, timedelta, timezone
 import json
 import os
+import re
 import time
 
 import requests
 
-# ===== 0. SEGREDOS (vêm do cofre do GitHub) =====
-apikey = os.environ["CALLMEBOT_APIKEY"]
-telefone = os.environ["CALLMEBOT_PHONE"]
-ARQUIVO = "vistas.json"
+# ===== 0. CONFIGURAÇÕES =====
+# Aviso curtinho no WhatsApp com o link da página (False = desliga)
+AVISO_WHATSAPP = True
+LINK_PAGINA = "https://wayarahvaz.github.io/Pesquisador-de-vagas/"
+
+apikey = os.environ.get("CALLMEBOT_APIKEY", "")
+telefone = os.environ.get("CALLMEBOT_PHONE", "")
+ARQUIVO = "vistas.json"        # caderno: o que o robô já viu
+ARQUIVO_PAGINA = "vagas.json"  # o que a página mostra
 FUSO_BR = timezone(timedelta(hours=-3))
 
 # ===== 1. LISTAS (seus critérios) =====
@@ -277,16 +283,6 @@ def enviar_whatsapp(texto):
     print("Envio:", r.status_code)
     time.sleep(3)
 
-def formatar(vaga):
-    estrela = "⭐ " if vaga["nota"] >= 10 else ""
-    modelo = {"remote": "🏠 Remoto", "hybrid": "🏢 Híbrido",
-              "on-site": "📍 Presencial"}.get(vaga["modelo"], "")
-    link = vaga["link"].replace("?jobBoardSource=gupy_portal", "")
-    titulo = vaga["titulo"][:80]
-    return (f"{estrela}*{titulo}*\n"
-            f"{vaga['empresa']} — {modelo} {vaga['local']}\n"
-            f"{link}")
-
 # ===== 7. RODAR TUDO =====
 fontes = [buscar_gupy, buscar_greenhouse, buscar_lever,
           buscar_himalayas, buscar_remoteok, buscar_remotive]
@@ -313,25 +309,48 @@ for vaga in todas.values():
     aprovadas.append(vaga)
 aprovadas.sort(key=lambda v: v["nota"], reverse=True)
 
+# ===== 8. MEMÓRIA: anota quando cada vaga apareceu pela 1ª vez =====
+hoje_iso = datetime.now(FUSO_BR).strftime("%Y-%m-%d")
 vistas = carregar_vistas()
 novas = [v for v in aprovadas if v["id"] not in vistas]
-print(f"{len(aprovadas)} aprovadas, {len(novas)} novas, "
-      f"{len(aprovadas) - len(novas)} já enviadas antes")
+for v in novas:
+    vistas[v["id"]] = hoje_iso
+salvar_vistas(vistas)
+print(f"{len(aprovadas)} aprovadas, {len(novas)} novas hoje")
 
-hoje = datetime.now(FUSO_BR).strftime("%d/%m")
-if novas:
-    lote = 3
-    for i in range(0, len(novas), lote):
-        pedaco = novas[i:i + lote]
-        texto = "\n\n".join(formatar(v) for v in pedaco)
-        if i == 0:
-            texto = f"🎯 *Robô de Vagas — {hoje}*\n{len(novas)} vagas novas\n\n" + texto
-        enviar_whatsapp(texto)
-    for v in novas:
-        vistas[v["id"]] = datetime.now(FUSO_BR).strftime("%Y-%m-%d")
-    salvar_vistas(vistas)
-    print("Caderno atualizado:", len(vistas), "vagas anotadas")
-else:
-    enviar_whatsapp(f"🎯 *Robô de Vagas — {hoje}*\nNada novo hoje 😴 "
-                    f"({len(aprovadas)} vagas no radar, todas já enviadas)")
-    print("Nada novo hoje, sinal de vida enviado")
+# ===== 9. SALVAR O ARQUIVO DA PÁGINA =====
+def limpar_html(txt):
+    sem_tags = re.sub(r"<[^>]+>", " ", txt or "")      # tira <p>, <b>...
+    texto = re.sub(r"\s+", " ", sem_tags).strip()       # junta espaços
+    return re.sub(r" ([,.;:!?])", r"\1", texto)         # tira espaço antes de vírgula
+
+pagina = {
+    "atualizado_em": datetime.now(FUSO_BR).strftime("%d/%m/%Y às %H:%M"),
+    "hoje": hoje_iso,
+    "vagas": [
+        {
+            "id": v["id"],
+            "titulo": v["titulo"],
+            "empresa": v["empresa"],
+            "local": v["local"],
+            "modelo": v["modelo"],
+            "publicada": v["data"].strftime("%Y-%m-%d") if v["data"] else "",
+            "visto_em": vistas.get(v["id"], hoje_iso),
+            "link": v["link"].replace("?jobBoardSource=gupy_portal", ""),
+            "fonte": v["fonte"],
+            "nota": v["nota"],
+            "resumo": limpar_html(v["descricao"])[:400],
+        }
+        for v in aprovadas
+    ],
+}
+with open(ARQUIVO_PAGINA, "w", encoding="utf-8") as f:
+    json.dump(pagina, f, ensure_ascii=False, indent=1)
+print("Página atualizada:", len(pagina["vagas"]), "vagas")
+
+# ===== 10. AVISO NO WHATSAPP (opcional) =====
+if AVISO_WHATSAPP and apikey and telefone:
+    hoje = datetime.now(FUSO_BR).strftime("%d/%m")
+    enviar_whatsapp(f"🎯 *Robô de Vagas — {hoje}*\n"
+                    f"{len(novas)} vagas novas · {len(aprovadas)} no radar\n"
+                    f"{LINK_PAGINA}")
