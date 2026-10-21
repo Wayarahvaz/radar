@@ -19,6 +19,8 @@
     --star-soft: #f7ecd9;
     --new: #c2410c;
     --new-soft: #fbe7dc;
+    --ok: #2f7a3a;
+    --ok-soft: #e2f1e3;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -33,6 +35,8 @@
       --star-soft: #33281a;
       --new: #fb8c4c;
       --new-soft: #3a2418;
+      --ok: #7fd18a;
+      --ok-soft: #1c3320;
     }
   }
 
@@ -91,7 +95,9 @@
     border-radius: 12px;
     padding: 14px 16px;
   }
-  .vaga.feita { opacity: 0.5; }
+  .vaga.candidatei { border-left: 4px solid var(--ok); }
+  .vaga.sem_match { opacity: 0.55; }
+  .vaga.sem_match h2 a { text-decoration: line-through; }
   .topo { display: flex; gap: 10px; align-items: flex-start; }
   .vaga h2 { margin: 0; font-size: 16px; line-height: 1.35; flex: 1; }
   .vaga h2 a { color: var(--ink); text-decoration: none; }
@@ -110,12 +116,21 @@
   }
   .tag.star { background: var(--star-soft); color: var(--star); }
   .tag.new { background: var(--new-soft); color: var(--new); font-weight: 600; }
+  .tag.ok { background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+  .tag.nao { background: var(--line); color: var(--muted); font-weight: 600; }
   .resumo { margin: 8px 0 0; font-size: 13.5px; color: var(--muted); }
-  .acoes { display: flex; gap: 14px; align-items: center; margin-top: 10px; font-size: 14px; }
-  .acoes a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .acoes { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 10px; font-size: 14px; }
+  .acoes a { color: var(--accent); font-weight: 600; text-decoration: none; margin-right: 6px; }
   .acoes a:hover { text-decoration: underline; }
-  .acoes label { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; color: var(--muted); }
-  .acoes input { accent-color: var(--accent); }
+  .btn {
+    font: inherit; font-size: 13.5px; cursor: pointer;
+    padding: 5px 12px; border-radius: 8px;
+    border: 1px solid var(--line); background: var(--card); color: var(--ink);
+  }
+  .btn:hover { border-color: var(--muted); }
+  .btn.ok.ativo { background: var(--ok); border-color: var(--ok); color: var(--card); }
+  .btn.nao.ativo { background: var(--muted); border-color: var(--muted); color: var(--card); }
+  .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 
   .vazio { text-align: center; color: var(--muted); padding: 40px 0; }
 
@@ -128,7 +143,7 @@
 <body>
 <div class="wrap">
   <header>
-    <h1>🎯 Radar de Vagas</h1>
+    <h1> Radar Pessoal de Vagas</h1>
     <p id="atualizado">Carregando…</p>
   </header>
 
@@ -152,7 +167,12 @@
     <div class="linha">
       <label class="chip"><input type="checkbox" id="soNovas"> Só novas de hoje</label>
       <label class="chip"><input type="checkbox" id="soEstrela"> Só ⭐ prioritárias</label>
-      <label class="chip"><input type="checkbox" id="esconderFeitas"> Esconder as que já me candidatei</label>
+      <select id="status">
+        <option value="pendente">Mostrar: pendentes</option>
+        <option value="candidatei">Mostrar: ✅ me candidatei</option>
+        <option value="sem_match">Mostrar: ✖ sem match</option>
+        <option value="">Mostrar: todas</option>
+      </select>
       <span class="contagem" id="contagem"></span>
     </div>
   </div>
@@ -163,17 +183,23 @@
 <script>
 // ===== 1. ESTADO =====
 let dados = { vagas: [], hoje: "" };
-let candidatadas = carregarCandidatadas();
+let status = carregarStatus();   // { "Gupy-123": "candidatei", "Lever-abc": "sem_match" }
 
-// "Candidatei" fica salvo só neste navegador (localStorage)
-function carregarCandidatadas() {
-  try { return new Set(JSON.parse(localStorage.getItem("candidatadas") || "[]")); }
-  catch (e) { return new Set(); }
+// Os status ficam salvos só neste navegador (localStorage)
+function carregarStatus() {
+  try {
+    const salvo = JSON.parse(localStorage.getItem("status_vagas") || "{}");
+    // traz as marcações da versão antiga (só "Candidatei")
+    const antigas = JSON.parse(localStorage.getItem("candidatadas") || "[]");
+    antigas.forEach((id) => { if (!salvo[id]) salvo[id] = "candidatei"; });
+    return salvo;
+  } catch (e) { return {}; }
 }
-function salvarCandidatadas() {
-  try { localStorage.setItem("candidatadas", JSON.stringify([...candidatadas])); }
+function salvarStatus() {
+  try { localStorage.setItem("status_vagas", JSON.stringify(status)); }
   catch (e) { /* navegador sem armazenamento: só não lembra */ }
 }
+function statusDe(id) { return status[id] || "pendente"; }
 
 // ===== 2. AJUDANTES =====
 const $ = (id) => document.getElementById(id);
@@ -206,7 +232,8 @@ function desenhar() {
     if (modelo && v.modelo !== modelo) return false;
     if ($("soNovas").checked && v.visto_em !== dados.hoje) return false;
     if ($("soEstrela").checked && v.nota < 10) return false;
-    if ($("esconderFeitas").checked && candidatadas.has(v.id)) return false;
+    const filtroStatus = $("status").value;
+    if (filtroStatus && statusDe(v.id) !== filtroStatus) return false;
     if (termo) {
       const texto = semAcento([v.titulo, v.empresa, v.local, v.resumo].join(" "));
       // todas as palavras digitadas precisam aparecer
@@ -222,7 +249,10 @@ function desenhar() {
     return b.nota - a.nota;
   });
 
-  $("contagem").textContent = `${vagas.length} de ${dados.vagas.length} vagas`;
+  const total = { candidatei: 0, sem_match: 0 };
+  dados.vagas.forEach((v) => { if (total[statusDe(v.id)] !== undefined) total[statusDe(v.id)]++; });
+  $("contagem").textContent =
+    `${vagas.length} de ${dados.vagas.length} vagas · ✅ ${total.candidatei} · ✖ ${total.sem_match}`;
 
   if (!vagas.length) {
     $("lista").innerHTML = `<p class="vazio">Nenhuma vaga com esses filtros.</p>`;
@@ -230,8 +260,10 @@ function desenhar() {
   }
 
   $("lista").innerHTML = vagas.map((v) => {
-    const feita = candidatadas.has(v.id);
+    const st = statusDe(v.id);
     const tags = [];
+    if (st === "candidatei") tags.push(`<span class="tag ok">✅ Me candidatei</span>`);
+    if (st === "sem_match") tags.push(`<span class="tag nao">✖ Sem match</span>`);
     if (v.visto_em === dados.hoje) tags.push(`<span class="tag new">NOVA</span>`);
     if (v.nota >= 10) tags.push(`<span class="tag star">⭐ prioritária</span>`);
     if (MODELOS[v.modelo]) tags.push(`<span class="tag">${MODELOS[v.modelo]}</span>`);
@@ -239,7 +271,7 @@ function desenhar() {
     if (v.publicada) tags.push(`<span class="tag">publicada ${dataBR(v.publicada)}</span>`);
 
     return `
-      <article class="vaga ${feita ? "feita" : ""}">
+      <article class="vaga ${st}">
         <div class="topo">
           <h2><a href="${escapar(linkSeguro(v.link))}" target="_blank" rel="noopener">${escapar(v.titulo)}</a></h2>
           <span class="nota" title="Nota do robô">${v.nota} pts</span>
@@ -249,7 +281,10 @@ function desenhar() {
         ${v.resumo ? `<p class="resumo">${escapar(v.resumo.slice(0, 220))}${v.resumo.length > 220 ? "…" : ""}</p>` : ""}
         <div class="acoes">
           <a href="${escapar(linkSeguro(v.link))}" target="_blank" rel="noopener">Abrir vaga ↗</a>
-          <label><input type="checkbox" data-id="${escapar(v.id)}" ${feita ? "checked" : ""}> Candidatei</label>
+          <button class="btn ok ${st === "candidatei" ? "ativo" : ""}" data-id="${escapar(v.id)}" data-status="candidatei"
+                  aria-pressed="${st === "candidatei"}">✅ Me candidatei</button>
+          <button class="btn nao ${st === "sem_match" ? "ativo" : ""}" data-id="${escapar(v.id)}" data-status="sem_match"
+                  aria-pressed="${st === "sem_match"}">✖ Não tem match</button>
         </div>
       </article>`;
   }).join("");
@@ -273,14 +308,18 @@ async function carregar() {
 }
 
 // ===== 5. REAGIR AOS CLIQUES E À DIGITAÇÃO =====
-["busca", "fonte", "modelo", "ordem", "soNovas", "soEstrela", "esconderFeitas"]
+["busca", "fonte", "modelo", "ordem", "soNovas", "soEstrela", "status"]
   .forEach((id) => $(id).addEventListener("input", desenhar));
 
-$("lista").addEventListener("change", (e) => {
-  const id = e.target.dataset.id;
-  if (!id) return;
-  e.target.checked ? candidatadas.add(id) : candidatadas.delete(id);
-  salvarCandidatadas();
+// Clicar num botão marca o status; clicar de novo no mesmo botão desmarca
+$("lista").addEventListener("click", (e) => {
+  const botao = e.target.closest("button[data-id]");
+  if (!botao) return;
+  const id = botao.dataset.id;
+  const novo = botao.dataset.status;
+  if (statusDe(id) === novo) delete status[id];
+  else status[id] = novo;
+  salvarStatus();
   desenhar();
 });
 
