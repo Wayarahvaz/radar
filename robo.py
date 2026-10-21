@@ -15,7 +15,7 @@ import requests
 # ===== 0. CONFIGURAÇÕES =====
 # Aviso curtinho no WhatsApp com o link da página (False = desliga)
 AVISO_WHATSAPP = True
-LINK_PAGINA = "https://wayarahvaz.github.io/Pesquisador-de-vagas/"
+LINK_PAGINA = "https://wayarahvaz.github.io/radar/"
 
 apikey = os.environ.get("CALLMEBOT_APIKEY", "")
 telefone = os.environ.get("CALLMEBOT_PHONE", "")
@@ -491,7 +491,4 @@ print("Página atualizada:", len(pagina["vagas"]), "vagas")
 
 # ===== 10. AVISO NO WHATSAPP (opcional) =====
 if AVISO_WHATSAPP and apikey and telefone:
-    hoje = datetime.now(FUSO_BR).strftime("%d/%m")
-    enviar_whatsapp(f"🎯 *Robô de Vagas — {hoje}*\n"
-                    f"{len(novas)} vagas novas · {len(aprovadas)} no radar\n"
-                    f"{LINK_PAGINA}")
+    enviar_whatsapp(f"Tem {len(novas)} vagas novas aqui. Veja na sua página {LINK_PAGINA}")
