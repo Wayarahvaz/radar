@@ -1,4 +1,10 @@
 from datetime import datetime, timedelta, timezone
+from email.utils import parsedate_to_datetime
+from html.parser import HTMLParser
+from urllib.parse import unquote
+import email
+import html
+import imaplib
 import json
 import os
 import re
@@ -204,6 +210,139 @@ def buscar_remotive():
         time.sleep(0.5)
     return vagas
 
+# ===== 3b. ALERTAS POR E-MAIL (LinkedIn, Indeed, Glassdoor) =====
+# O robô lê o marcador do Gmail onde os alertas chegam e tira os links de vaga.
+# Nome EXATO das pastas/marcadores onde chegam os alertas (pode ter mais de um).
+# Marcador dentro de outro no Gmail: use barra, ex.: "Vagas/LinkedIn"
+MARCADORES_EMAIL = ["Linkedin - Alertas"]
+DIAS_EMAIL = 7                       # lê os e-mails dos últimos 7 dias
+FONTES_EMAIL = ["LinkedIn", "Indeed", "Glassdoor"]
+
+# Como reconhecer o link de uma vaga em cada site
+PADROES_EMAIL = [
+    ("LinkedIn", re.compile(r"linkedin\.com/(?:comm/)?jobs/view/(\d+)"),
+     lambda m, href: f"https://www.linkedin.com/jobs/view/{m.group(1)}"),
+    ("Indeed", re.compile(r"indeed\.[a-z.]+/.*?[?&](?:jk|vjk)=([0-9a-f]{16})"),
+     lambda m, href: f"https://br.indeed.com/viewjob?jk={m.group(1)}"),
+    ("Glassdoor", re.compile(r"glassdoor\.[a-z.]+/.*?(?:jobListingId|jl)=(\d+)"),
+     lambda m, href: href),
+]
+
+# Textos de botão que não são o título da vaga
+TEXTOS_IGNORAR = ["ver vaga", "candidatar", "candidate-se", "view job", "apply",
+                  "see all", "ver todas", "ver mais", "salvar", "save"]
+
+class _LeitorEmail(HTMLParser):
+    """Passa pelo HTML do e-mail guardando cada link e os textos logo depois dele."""
+    def __init__(self):
+        super().__init__()
+        self.links = []          # [{"href", "texto", "depois": [...]}]
+        self._atual = None
+        self._ultimo = None
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "a":
+            self._atual = {"href": dict(attrs).get("href") or "", "texto": [], "depois": []}
+
+    def handle_data(self, data):
+        texto = " ".join(data.split())
+        if not texto:
+            return
+        if self._atual is not None:
+            self._atual["texto"].append(texto)
+        elif self._ultimo is not None and len(self._ultimo["depois"]) < 3:
+            self._ultimo["depois"].append(texto)
+
+    def handle_endtag(self, tag):
+        if tag == "a" and self._atual is not None:
+            self._atual["texto"] = " ".join(self._atual["texto"]).strip()
+            self.links.append(self._atual)
+            self._ultimo = self._atual
+            self._atual = None
+
+def vagas_do_html(corpo_html, data_email):
+    """Recebe o HTML de um e-mail de alerta e devolve as vagas no formato padrão."""
+    leitor = _LeitorEmail()
+    leitor.feed(corpo_html)
+    achadas = {}
+    for link in leitor.links:
+        # links de rastreio escondem o endereço real "embrulhado": desembrulha
+        href = html.unescape(link["href"])
+        aberto = unquote(unquote(href))
+        for fonte, padrao_re, montar in PADROES_EMAIL:
+            m = padrao_re.search(aberto)
+            if not m:
+                continue
+            chave = f"{fonte}-{m.group(1)}"
+            titulo = link["texto"]
+            eh_botao = (len(titulo) < 6 or titulo.lower().startswith("http")
+                        or any(t in titulo.lower() for t in TEXTOS_IGNORAR))
+            vaga = achadas.get(chave)
+            if vaga is None:
+                vaga = {"id": m.group(1), "fonte": fonte, "titulo": "",
+                        "link": montar(m, href), "extras": []}
+                achadas[chave] = vaga
+            if not eh_botao and len(titulo) > len(vaga["titulo"]):
+                vaga["titulo"] = titulo
+                vaga["extras"] = link["depois"]
+            break
+
+    vagas = []
+    for v in achadas.values():
+        if not v["titulo"]:
+            continue                     # só achou botão, sem título: ignora
+        extras = [e for e in v["extras"] if not any(t in e.lower() for t in TEXTOS_IGNORAR)]
+        empresa = extras[0] if len(extras) > 0 else ""
+        local = extras[1] if len(extras) > 1 else ""
+        if "·" in empresa and not local:          # "Bunge · São Paulo (Híbrido)"
+            empresa, local = [p.strip() for p in empresa.split("·", 1)]
+        modelo = adivinhar_modelo(" ".join([v["titulo"], empresa, local]))
+        vagas.append(padrao(v["id"], v["titulo"], empresa, local, modelo,
+                            data_email, v["link"], "", v["fonte"]))
+    return vagas
+
+def buscar_emails():
+    usuario = os.environ.get("GMAIL_USER", "")
+    senha = os.environ.get("GMAIL_APP_PASSWORD", "")
+    if not usuario or not senha:
+        print("  E-mails: Gmail não configurado, pulando")
+        return []
+    meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+             "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    desde = datetime.now(timezone.utc) - timedelta(days=DIAS_EMAIL)
+    desde_txt = f"{desde.day:02d}-{meses[desde.month - 1]}-{desde.year}"
+    vagas = []
+    try:
+        imap = imaplib.IMAP4_SSL("imap.gmail.com")
+        imap.login(usuario, senha)
+        for marcador in MARCADORES_EMAIL:
+            status_sel, _ = imap.select(f'"{marcador}"', readonly=True)  # só lê, não marca como lido
+            if status_sel != "OK":
+                print(f"  E-mails: não achei a pasta '{marcador}'")
+                continue
+            _, ids = imap.search(None, f"(SINCE {desde_txt})")
+            lista_ids = ids[0].split()
+            print(f"  E-mails: {len(lista_ids)} alertas em '{marcador}' (últimos {DIAS_EMAIL} dias)")
+            for num in lista_ids:
+                _, dados_msg = imap.fetch(num, "(RFC822)")
+                msg = email.message_from_bytes(dados_msg[0][1])
+                try:
+                    data_email = parsedate_to_datetime(msg.get("Date"))
+                except Exception:
+                    data_email = None
+                corpo = ""
+                for parte in msg.walk():
+                    if parte.get_content_type() == "text/html":
+                        corpo = parte.get_payload(decode=True).decode(
+                            parte.get_content_charset() or "utf-8", "ignore")
+                        break
+                if corpo:
+                    vagas.extend(vagas_do_html(corpo, data_email))
+        imap.logout()
+    except Exception as e:
+        print("  E-mails erro →", e)
+    return vagas
+
 # ===== 4. FILTROS E NOTA =====
 def titulo_ok(titulo):
     t = titulo.lower()
@@ -223,6 +362,8 @@ def local_ok(vaga):
     modelo = vaga["modelo"]
     local = vaga["local"].lower().strip()
     cidade = local.split(",")[0].strip()
+    if vaga["fonte"] in FONTES_EMAIL:
+        return True          # o local já foi escolhido no próprio alerta
     if modelo == "remote":
         if vaga["fonte"] == "Gupy":
             return True
@@ -285,7 +426,7 @@ def enviar_whatsapp(texto):
 
 # ===== 7. RODAR TUDO =====
 fontes = [buscar_gupy, buscar_greenhouse, buscar_lever,
-          buscar_himalayas, buscar_remoteok, buscar_remotive]
+          buscar_himalayas, buscar_remoteok, buscar_remotive, buscar_emails]
 
 todas = {}
 for buscar in fontes:
