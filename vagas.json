@@ -1,6 +1,6 @@
 {
- "atualizado_em": "22/10/2026 às 12:17",
- "hoje": "2026-10-22",
+ "atualizado_em": "23/10/2026 às 11:07",
+ "hoje": "2026-10-23",
  "vagas": [
   {
    "id": "Lever-c34678e9-f1fb-44c6-b3a3-e04e03e7796b",
@@ -16,32 +16,6 @@
    "resumo": "ARE YOU INTERESTED IN JOINING AN INNOVATIVE LOGISTICS TECHNOLOGY COMPANY? Loadsmart is a growth-stage technology company valued at over $1 billion (a true Tech Unicorn)! We are a collection of industry veterans and user-centered engineers using innovative technology to fearlessly reinvent the future of freight by helping shippers, brokers, warehouses and carriers to move more with less. With headq"
   },
   {
-   "id": "Gupy-12736438",
-   "titulo": "Analista de Trading Execution Pleno | São Paulo (SP)",
-   "empresa": "Ipiranga",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-16",
-   "visto_em": "2026-10-20",
-   "link": "https://ipiranga.gupy.io/job/eyJqb2JJZCI6MTI3MzY0MzgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 6,
-   "resumo": "Já pensou em trabalhar na Ipiranga? Na Ipiranga acreditamos que pessoas com brilho nos olhos, autênticas e engajadas são nosso diferencial competitivo! Atuamos com paixão e propósito, colocando o cliente no centro das nossas decisões. Valorizamos a autonomia, a abertura e a transparência, pois temos certo de que a verdade e o respeito fortalecem relações e geram confiança. Proporcionamos para noss"
-  },
-  {
-   "id": "Gupy-12693711",
-   "titulo": "Analista de Dados Pleno - São Paulo/SP",
-   "empresa": "EuroChem",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-16",
-   "visto_em": "2026-10-20",
-   "link": "https://carreiras.gupy.io/job/eyJqb2JJZCI6MTI2OTM3MTEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 5,
-   "resumo": "Somos a EuroChem, líder global em nutrição de plantas e uma das únicas empresas do mundo a produzir os três principais macronutrientes da agricultura: nitrogênio, fósforo e potássio (NPK).&nbsp;No Brasil, atuamos de forma integrada, da mineração à produção e distribuição de fertilizantes, levando soluções para o campo e fazendo a diferença em toda a cadeia do agronegócio.Se você busca desenvolvime"
-  },
-  {
    "id": "Gupy-12764872",
    "titulo": "Analista Tributário Pleno – Transfer Pricing",
    "empresa": "Lazzo Secondment",
@@ -53,6 +27,19 @@
    "fonte": "Gupy",
    "nota": 5,
    "resumo": "Nosso cliente é uma empresa multinacional de grande porte, com atuação global no setor de mineração e operações em diferentes países, inserida em um ambiente dinâmico, multicultural e com forte interação entre as estruturas locais e internacionais.Buscamos um profissional com sólida experiência em Transfer Pricing (Preços de Transferência) e conhecimentos em Tributos Diretos, que tenha capacidade "
+  },
+  {
+   "id": "Gupy-12771437",
+   "titulo": "Analista de Inteligencia de Mercado Pleno - São Paulo",
+   "empresa": "Vigor Alimentos",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-10-22",
+   "visto_em": "2026-10-23",
+   "link": "https://vigoralimentos.gupy.io/job/eyJqb2JJZCI6MTI3NzE0MzcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 4,
+   "resumo": "Nosso crescimento é resultado direto da dedicação, do comprometimento e do talento das pessoas que caminham ao nosso lado. Construímos uma cultura sólida, guiada por valores que norteiam nossas decisões, impulsionam nossas estratégias e orientam a busca por profissionais que compartilham do nosso propósito.Acreditamos que cada desafio representa uma oportunidade de evolução. Por isso, valorizamos "
   },
   {
    "id": "Gupy-12723700",
@@ -81,6 +68,19 @@
    "resumo": "Olá, somos a Cruzeiro do Sul Educacional! ⭐&nbsp;Nós acreditamos no poder de transformação de vidas por meio da educação de qualidade e excelência!&nbsp;Aqui, nós buscamos conectar diferentes pessoas para que possam construir um mundo melhor a partir da educação, com muito trabalho, respeito e dedicação, proporcionando a melhor experiência e apoiando a jornada do conhecimento de mais de 500 mil al"
   },
   {
+   "id": "Gupy-12773355",
+   "titulo": "Analista de dados Pleno | Jurídico | Corporativo São Paulo",
+   "empresa": "Rede D'Or",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-10-23",
+   "visto_em": "2026-10-23",
+   "link": "https://rededor.gupy.io/job/eyJqb2JJZCI6MTI3NzMzNTUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 4,
+   "resumo": "Se você quer trabalhar com propósito e fazer a diferença na vida das pessoas, seu lugar pode ser aqui.Somos uma rede que acredita no cuidado humanizado, na força do trabalho em equipe e no desenvolvimento contínuo de seus profissionais.Estamos em busca de profissionais para atuar na área jurídica como Analista de dados Pleno, contribuindo para um atendimento seguro, humanizado e alinhado às melhor"
+  },
+  {
    "id": "Gupy-12760188",
    "titulo": "Analista de Dados Sênior (Data & Analytics) (Acessível também para Pessoas com Deficiência)",
    "empresa": "GOL Linhas Aéreas",
@@ -107,17 +107,17 @@
    "resumo": "1. Missão do CargoGerar inteligência de negócios e insights estratégicos por meio de análises avançadas e cruzamento de dados, antecipando riscos, oportunidades e tendências para subsidiar as tomadas de decisão e o planejamento da organização. Mapear e impulsionar a evolução da cultura data-driven, garantindo a governança, a consistência e a confiabilidade das informações, além de atuar como elo i"
   },
   {
-   "id": "Gupy-12693700",
-   "titulo": "Analista de Dados de FP&A SR",
-   "empresa": "Nitro",
+   "id": "Gupy-12771458",
+   "titulo": "Especialista de Pricing",
+   "empresa": "Eletromidia",
    "local": "São Paulo",
    "modelo": "hybrid",
-   "publicada": "2026-10-15",
-   "visto_em": "2026-10-20",
-   "link": "https://nitro.gupy.io/job/eyJqb2JJZCI6MTI2OTM3MDAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "publicada": "2026-10-22",
+   "visto_em": "2026-10-23",
+   "link": "https://eletromidia.gupy.io/job/eyJqb2JJZCI6MTI3NzE0NTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
    "fonte": "Gupy",
    "nota": 4,
-   "resumo": "Na Nitro somos apaixonados pelo que fazemos, agimos com senso de dono e valorizamos a vida. Acreditamos na importância da sustentabilidade, agimos sempre com responsabilidade e segurança. Somos parceiros dos nossos clientes e buscamos levar excelência à sociedade por meio de produtos, serviços e processos que promovem soluções, brilho e vida. Nossa Gente é nossa motivação, atraímos e desenvolvemos"
+   "resumo": "MAIS QUE OUT OF HOME, TRANSFORMAR A CIDADE É O NOSSO BUSINESS!Somos o maior veículo de mídia Out of Home do Brasil, impactando mais de22 milhões de pessoas todos os diascom criatividade, inovação e resultados. Com uma atuação ampla e uma presença marcante, transformamos o dia a dia urbano em experiências únicas e surpreendentes.Valorizamos a diversidade e inclusão, buscando distintos perfis, gêner"
   },
   {
    "id": "Gupy-12752054",
@@ -144,6 +144,19 @@
    "fonte": "Gupy",
    "nota": 3,
    "resumo": "Prazer, nós somos a NEXDOM Healthtech 🤝🏽&nbsp;Você está preparado para fazer parte de uma empresa que promove inovação e qualidade na gestão de operadoras de planos de saúde, oferece um completo pacote de benefícios, plano de desenvolvimento e está há mais 20 anos no mercado?&nbsp;&nbsp;&nbsp;&nbsp;Aqui, o nosso compromisso é criar um ambiente positivo e sustentável! E muito mais do que oferecer s"
+  },
+  {
+   "id": "Gupy-12753443",
+   "titulo": "ANALISTA DE DADOS SR - PREVENÇÃO A FRAUDE",
+   "empresa": "Afinz",
+   "local": "Sorocaba",
+   "modelo": "hybrid",
+   "publicada": "2026-10-23",
+   "visto_em": "2026-10-23",
+   "link": "https://afinz.gupy.io/job/eyJqb2JJZCI6MTI3NTM0NDMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 3,
+   "resumo": "Fazer parte da Afinz é integrar uma empresa que é 100% a fim de pessoas, afinal, crescer juntos, lado a lado, é o que nos interessa. Por este motivo investimos no crescimento de todos, pois acreditamos que isso é fundamental para a continuação do nosso desenvolvimento como Cia, enquanto, paralelamente, você se torna cada vez mais protagonista da sua própria história.Enxergamos os nossos profission"
   },
   {
    "id": "Gupy-12767063",
@@ -235,19 +248,6 @@
    "fonte": "Gupy",
    "nota": 2,
    "resumo": "A Volkswagen Group Services é uma empresa do Grupo Volkswagen, orientada para trabalhar para as empresas do Grupo em todo o mundo. Prestamos serviços nas áreas de logística, tecnologia, engenharia, qualidade, serviços comerciais, recursos humanos, comunicação e serviços administrativos e financeiros. Estamos direcionados para as atividades dos nossos clientes e assumimos a responsabilidade de real"
-  },
-  {
-   "id": "Gupy-12465588",
-   "titulo": "Sr Business Analyst",
-   "empresa": "Topaz Brasil",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-15",
-   "visto_em": "2026-10-20",
-   "link": "https://topazbrasil.gupy.io/job/eyJqb2JJZCI6MTI0NjU1ODgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "Na Topaz, não criamos apenas tecnologia. Nós transformamos o futuro do mercado financeiro. 🚀Somos um time #Multi de protagonistas que transformam ideias em soluções de impacto. Em nosso Topaz Team, fomentamos um ambiente de colaboração real onde sua curiosidade é premiada e seu potencial se expande, aprendendo com os melhores para resolver desafios complexos.Você está pronto(a) para ser protagonis"
   },
   {
    "id": "Gupy-12721143",
