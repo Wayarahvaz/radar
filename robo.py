@@ -24,17 +24,35 @@ ARQUIVO_PAGINA = "vagas.json"  # o que a página mostra
 FUSO_BR = timezone(timedelta(hours=-3))
 
 # ===== 1. LISTAS (seus critérios) =====
+
 cargos = [
+    # Inteligência de Mercado e estratégia
     "Market Intelligence", "Inteligência de Mercado", "Inteligencia de Mercado",
-    "Data Analyst", "Analista de BI", "Analista de Dados",
-    "Business Intelligence", "Power BI", "Market Research",
-    "Competitive Intelligence", "Business Analyst", "BI Analyst",
-    "Pricing", "Research Analyst", "Revenue Operations",
-    "Sales Operations", "Geopolitical Intelligence", "Trading",
-    "Political Intelligence", "Corporate Intelligence",
-    "Analista de Geopolítica", "Analista de Mercado",
+    "Competitive Intelligence", "Market Research", "Analista de Mercado",
+    "Análise de Mercado", "Analise de Mercado",
     "Inteligência de Negócios", "Inteligencia de Negocios",
-    "Análise de Mercado", "Business Operations",
+    "Corporate Intelligence",
+
+    # Dados e BI
+    "Data Analyst", "Analista de Dados", "Analista de BI", "BI Analyst",
+    "Business Intelligence", "Power BI", "Business Analyst",
+
+    # Comercial e operações
+    "Pricing", "Revenue Operations", "Revenue Management",
+    "Sales Operations", "Business Operations", "Inteligência Comercial",
+    "Inteligencia Comercial", "Supply Chain Analytics",
+
+    # Geopolítica e risco
+    "Geopolitical Intelligence", "Political Intelligence", "Political Risk",
+    "Analista de Geopolítica", "Analista de Geopolitica", "Risk Analyst",
+
+    # Commodities e trading
+    "Trading", "Commodity", "Commodities", "Analista de Commodities",
+    "Market Analyst", "Research Analyst", "Fundamental Analyst",
+    "Price Reporting", "Price Assessor", "Origination", "Originação",
+    "Originacao", "Chartering", "Freight Analyst", "Analista de Fretes",
+    "Energy Market", "Mercado de Energia", "Metals Analyst",
+    "Fertilizantes", "Minério", "Minerio",
 ]
 cargos_min = [c.lower() for c in cargos]
 
