@@ -25,10 +25,10 @@ jobs:
           # WhatsApp (CallMeBot)
           CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
-          # Gmail: leitura dos alertas do LinkedIn (marcador Radar-LinkedIn)
+          # Gmail: leitura dos alertas (nome EXATO do marcador; vários = separe por vírgula)
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          GMAIL_LABEL: Radar-LinkedIn
+          GMAIL_LABEL: "Linkedin - Alertas"
         run: python robo.py
 
       - name: Salvar caderno e vagas da página
