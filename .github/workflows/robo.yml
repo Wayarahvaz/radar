@@ -22,8 +22,13 @@ jobs:
 
       - name: Buscar vagas e atualizar a página
         env:
+          # WhatsApp (CallMeBot)
           CALLMEBOT_PHONE: ${{ secrets.CALLMEBOT_PHONE }}
           CALLMEBOT_APIKEY: ${{ secrets.CALLMEBOT_APIKEY }}
+          # Gmail: leitura dos alertas do LinkedIn (marcador Radar-LinkedIn)
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          GMAIL_LABEL: Radar-LinkedIn
         run: python robo.py
 
       - name: Salvar caderno e vagas da página
