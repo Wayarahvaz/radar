@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Radar de Vagas</title>
+<!-- Biblioteca de QR code (se não carregar, a página continua funcionando só com o link) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
 <style>
   /* ===== CORES (tema claro e escuro) ===== */
   :root {
@@ -52,6 +54,47 @@
   /* ===== CABEÇALHO ===== */
   header h1 { margin: 0; font-size: 26px; letter-spacing: -0.02em; }
   header p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+  .sync { margin-top: 12px; }
+
+  /* ===== PAINEL "LEVAR MARCAÇÕES" ===== */
+  .painel {
+    margin-top: 12px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .painel h3 { margin: 0 0 6px; font-size: 15px; }
+  .painel p { margin: 0 0 10px; color: var(--muted); font-size: 13.5px; }
+  .qr {
+    display: inline-block;
+    background: #ffffff;          /* QR precisa de fundo branco, mesmo no tema escuro */
+    padding: 10px;
+    border-radius: 8px;
+  }
+  .qr:empty { display: none; }
+  .qr img, .qr canvas { display: block; }
+  .link-marcacoes {
+    width: 100%;
+    margin-top: 10px;
+    padding: 8px 10px;
+    font: 12px/1.4 ui-monospace, Consolas, monospace;
+    color: var(--muted);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+  }
+
+  /* ===== AVISO (toast) ===== */
+  .aviso {
+    position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%);
+    z-index: 20;
+    max-width: calc(100% - 32px);
+    background: var(--ink); color: var(--card);
+    padding: 10px 16px; border-radius: 10px;
+    font-size: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
 
   /* ===== FILTROS ===== */
   .filtros {
@@ -145,6 +188,22 @@
   <header>
     <h1> Radar Pessoal de Vagas</h1>
     <p id="atualizado">Carregando…</p>
+
+    <div class="sync">
+      <button id="levar" class="btn">📲 Levar marcações para outro aparelho</button>
+    </div>
+
+    <div id="painel" class="painel" hidden>
+      <h3>Abra este link no outro aparelho</h3>
+      <p id="qrDica"></p>
+      <div id="qr" class="qr"></div>
+      <input id="linkMarcacoes" class="link-marcacoes" type="text" readonly aria-label="Link com as marcações">
+      <div class="linha">
+        <button id="copiar" class="btn">📋 Copiar link</button>
+        <button id="compartilhar" class="btn" hidden>📤 Compartilhar</button>
+        <button id="fechar" class="btn">Fechar</button>
+      </div>
+    </div>
   </header>
 
   <div class="filtros">
@@ -180,12 +239,15 @@
   <div class="lista" id="lista"></div>
 </div>
 
+<p id="aviso" class="aviso" role="status" hidden></p>
+
 <script>
 // ===== 1. ESTADO =====
 let dados = { vagas: [], hoje: "" };
 let status = carregarStatus();   // { "Gupy-123": "candidatei", "Lever-abc": "sem_match" }
 
-// Os status ficam salvos só neste navegador (localStorage)
+// Os status ficam salvos neste navegador (localStorage).
+// Para levar a outro aparelho, use o botão "Levar marcações" (seção 6).
 function carregarStatus() {
   try {
     const salvo = JSON.parse(localStorage.getItem("status_vagas") || "{}");
@@ -205,7 +267,7 @@ function statusDe(id) { return status[id] || "pendente"; }
 const $ = (id) => document.getElementById(id);
 
 function semAcento(txt) {
-  return (txt || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  return (txt || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 }
 function escapar(txt) {
   return (txt || "").replace(/[&<>"']/g, (c) =>
@@ -220,6 +282,15 @@ function dataBR(iso) {
   return `${d}/${m}`;
 }
 const MODELOS = { remote: "🏠 Remoto", hybrid: "🏢 Híbrido", "on-site": "📍 Presencial" };
+
+let timerAviso = null;
+function aviso(msg) {
+  const el = $("aviso");
+  el.textContent = msg;
+  el.hidden = false;
+  clearTimeout(timerAviso);
+  timerAviso = setTimeout(() => { el.hidden = true; }, 5000);
+}
 
 // ===== 3. DESENHAR A LISTA =====
 function desenhar() {
@@ -323,6 +394,99 @@ $("lista").addEventListener("click", (e) => {
   desenhar();
 });
 
+// ===== 6. LEVAR MARCAÇÕES PARA OUTRO APARELHO =====
+// As marcações viajam dentro do próprio link, depois do "#m=".
+// O que vem depois do "#" não é enviado ao servidor do GitHub: fica só no navegador.
+const CURTO = { candidatei: "c", sem_match: "n" };   // encurta para o link caber no QR code
+const LONGO = { c: "candidatei", n: "sem_match" };
+
+// texto → base64 "de URL" (aceita acentos e não usa + / =)
+function codificar(obj) {
+  const bytes = new TextEncoder().encode(JSON.stringify(obj));
+  let bin = "";
+  bytes.forEach((b) => { bin += String.fromCharCode(b); });
+  return btoa(bin).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+}
+function decodificar(txt) {
+  let b64 = txt.replace(/-/g, "+").replace(/_/g, "/");
+  while (b64.length % 4) b64 += "=";
+  const bytes = Uint8Array.from(atob(b64), (c) => c.charCodeAt(0));
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function montarLink() {
+  const curto = {};
+  Object.entries(status).forEach(([id, st]) => { if (CURTO[st]) curto[id] = CURTO[st]; });
+  const qtd = Object.keys(curto).length;
+  if (!qtd) return null;
+  return { qtd, link: location.origin + location.pathname + "#m=" + codificar(curto) };
+}
+
+function abrirPainel() {
+  const pacote = montarLink();
+  if (!pacote) { aviso("Ainda não há marcações para levar."); return; }
+
+  $("linkMarcacoes").value = pacote.link;
+  $("painel").hidden = false;
+  $("compartilhar").hidden = !navigator.share;
+
+  const qr = $("qr");
+  qr.innerHTML = "";
+  let fezQr = false;
+  if (window.QRCode && pacote.link.length <= 2000) {
+    try {
+      new QRCode(qr, { text: pacote.link, width: 220, height: 220,
+                       correctLevel: QRCode.CorrectLevel.L });
+      fezQr = true;
+    } catch (e) { qr.innerHTML = ""; }
+  }
+  $("qrDica").textContent = fezQr
+    ? `${pacote.qtd} marcações. Aponte a câmera do outro aparelho para o código, ou copie o link.`
+    : `${pacote.qtd} marcações. Copie o link ou use Compartilhar (ex.: mandar para você mesma no WhatsApp).`;
+}
+
+// Quando a página abre com "#m=..." no endereço, importa as marcações
+function importarDoLink() {
+  const m = location.hash.match(/^#m=(.+)$/);
+  if (!m) return;
+  try {
+    const recebido = decodificar(m[1]);
+    let novas = 0;
+    Object.entries(recebido).forEach(([id, c]) => {
+      const st = LONGO[c];
+      if (st && status[id] !== st) { status[id] = st; novas++; }
+    });
+    salvarStatus();
+    aviso(novas
+      ? `${novas} marcação(ões) trazidas do outro aparelho.`
+      : "Este aparelho já estava em dia.");
+  } catch (e) {
+    aviso("Não consegui ler o link de marcações.");
+  }
+  // limpa o endereço, para não reimportar ao recarregar
+  history.replaceState(null, "", location.pathname + location.search);
+}
+
+$("levar").addEventListener("click", abrirPainel);
+$("fechar").addEventListener("click", () => { $("painel").hidden = true; });
+$("copiar").addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText($("linkMarcacoes").value);
+    aviso("Link copiado.");
+  } catch (e) {
+    $("linkMarcacoes").select();
+    aviso("Selecionei o link: use Ctrl+C para copiar.");
+  }
+});
+$("compartilhar").addEventListener("click", async () => {
+  try {
+    await navigator.share({ title: "Marcações do Radar de Vagas", url: $("linkMarcacoes").value });
+  } catch (e) { /* compartilhamento cancelado */ }
+});
+// se o link for colado numa aba que já está aberta
+window.addEventListener("hashchange", () => { importarDoLink(); desenhar(); });
+
+importarDoLink();
 carregar();
 </script>
 </body>
