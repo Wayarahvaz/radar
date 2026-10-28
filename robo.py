@@ -13,8 +13,10 @@ import time
 import requests
 
 # ===== 0. CONFIGURAÇÕES =====
-# Aviso curtinho no WhatsApp com o link da página (False = desliga)
+# Aviso no WhatsApp com o resumo das vagas novas (False = desliga)
 AVISO_WHATSAPP = True
+AVISO_SEM_NOVAS = False        # True = avisa também nos dias sem vaga nova
+TOP_WHATSAPP = 5               # quantas vagas listar na mensagem
 LINK_PAGINA = "https://wayarahvaz.github.io/radar/"
 
 apikey = os.environ.get("CALLMEBOT_APIKEY", "")
@@ -230,9 +232,12 @@ def buscar_remotive():
 
 # ===== 3b. ALERTAS POR E-MAIL (LinkedIn, Indeed, Glassdoor) =====
 # O robô lê o marcador do Gmail onde os alertas chegam e tira os links de vaga.
-# Nome EXATO das pastas/marcadores onde chegam os alertas (pode ter mais de um).
+# O nome do marcador vem do workflow (GMAIL_LABEL). Para mais de um, separe por vírgula:
+#   GMAIL_LABEL: Linkedin - Alertas, Indeed - Alertas
 # Marcador dentro de outro no Gmail: use barra, ex.: "Vagas/LinkedIn"
-MARCADORES_EMAIL = ["Linkedin - Alertas"]
+MARCADORES_EMAIL = [m.strip() for m in
+                    os.environ.get("GMAIL_LABEL", "Linkedin - Alertas").split(",")
+                    if m.strip()]
 DIAS_EMAIL = 7                       # lê os e-mails dos últimos 7 dias
 FONTES_EMAIL = ["LinkedIn", "Indeed", "Glassdoor"]
 
@@ -321,9 +326,9 @@ def vagas_do_html(corpo_html, data_email):
 
 def buscar_emails():
     usuario = os.environ.get("GMAIL_USER", "")
-    senha = os.environ.get("GMAIL_APP_PASSWORD", "")
+    senha = os.environ.get("GMAIL_APP_PASSWORD", "").replace(" ", "")  # aceita com ou sem espaços
     if not usuario or not senha:
-        print("  E-mails: Gmail não configurado, pulando")
+        print("  E-mails: Gmail não configurado (faltam os secrets GMAIL_USER / GMAIL_APP_PASSWORD), pulando")
         return []
     meses = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -336,7 +341,7 @@ def buscar_emails():
         for marcador in MARCADORES_EMAIL:
             status_sel, _ = imap.select(f'"{marcador}"', readonly=True)  # só lê, não marca como lido
             if status_sel != "OK":
-                print(f"  E-mails: não achei a pasta '{marcador}'")
+                print(f"  E-mails: não achei o marcador '{marcador}' (confira o nome exato no Gmail)")
                 continue
             _, ids = imap.search(None, f"(SINCE {desde_txt})")
             lista_ids = ids[0].split()
@@ -346,6 +351,8 @@ def buscar_emails():
                 msg = email.message_from_bytes(dados_msg[0][1])
                 try:
                     data_email = parsedate_to_datetime(msg.get("Date"))
+                    if data_email.tzinfo is None:              # evita erro ao comparar datas
+                        data_email = data_email.replace(tzinfo=timezone.utc)
                 except Exception:
                     data_email = None
                 corpo = ""
@@ -357,8 +364,16 @@ def buscar_emails():
                 if corpo:
                     vagas.extend(vagas_do_html(corpo, data_email))
         imap.logout()
+    except imaplib.IMAP4.error as e:
+        print("  E-mails: o Gmail recusou o login (confira a senha de app) →", e)
     except Exception as e:
         print("  E-mails erro →", e)
+    # mostra quantas vagas vieram de cada site
+    por_fonte = {}
+    for v in vagas:
+        por_fonte[v["fonte"]] = por_fonte.get(v["fonte"], 0) + 1
+    if por_fonte:
+        print("  E-mails por site:", ", ".join(f"{f} {n}" for f, n in por_fonte.items()))
     return vagas
 
 # ===== 4. FILTROS E NOTA =====
@@ -434,13 +449,52 @@ def salvar_vistas(vistas):
 
 # ===== 6. WHATSAPP =====
 def enviar_whatsapp(texto):
-    r = requests.get(
-        "https://api.callmebot.com/whatsapp.php",
-        params={"phone": telefone, "text": texto, "apikey": apikey},
-        timeout=60,
-    )
-    print("Envio:", r.status_code)
-    time.sleep(3)
+    try:
+        r = requests.get(
+            "https://api.callmebot.com/whatsapp.php",
+            params={"phone": telefone, "text": texto, "apikey": apikey},
+            timeout=60,
+        )
+        # o CallMeBot às vezes responde 200 mesmo com erro: mostra o começo da resposta
+        resposta = re.sub(r"<[^>]+>", " ", r.text)
+        print("WhatsApp:", r.status_code, "→", " ".join(resposta.split())[:150])
+    except Exception as e:
+        print("WhatsApp erro →", e)   # falha no aviso não derruba o robô
+
+def montar_mensagem(novas, total):
+    """Resumo do dia: quantas novas, as melhores e de onde vieram."""
+    data = datetime.now(FUSO_BR).strftime("%d/%m")
+    if not novas:
+        return (f"📡 *Radar de Vagas* – {data}\n"
+                f"Nenhuma vaga nova hoje · {total} no radar\n"
+                f"👉 {LINK_PAGINA}")
+
+    estrelas = sum(1 for v in novas if v["nota"] >= 10)
+    linhas = [f"📡 *Radar de Vagas* – {data}",
+              f"*{len(novas)} vagas novas*"
+              + (f" ({estrelas} ⭐)" if estrelas else "")
+              + f" · {total} no radar",
+              ""]
+
+    melhores = sorted(novas, key=lambda v: v["nota"], reverse=True)[:TOP_WHATSAPP]
+    for i, v in enumerate(melhores, 1):
+        titulo = " ".join(v["titulo"].split())
+        if len(titulo) > 60:
+            titulo = titulo[:57] + "…"
+        empresa = v["empresa"] or "empresa não informada"
+        estrela = "⭐ " if v["nota"] >= 10 else ""
+        linhas.append(f"{i}. {estrela}{titulo} – {empresa} ({v['nota']} pts)")
+    if len(novas) > TOP_WHATSAPP:
+        linhas.append(f"…e mais {len(novas) - TOP_WHATSAPP} na página")
+
+    por_fonte = {}
+    for v in novas:
+        por_fonte[v["fonte"]] = por_fonte.get(v["fonte"], 0) + 1
+    linhas += ["",
+               "Por fonte: " + " · ".join(f"{f} {n}" for f, n in
+                                          sorted(por_fonte.items(), key=lambda x: -x[1])),
+               f"👉 {LINK_PAGINA}"]
+    return "\n".join(linhas)
 
 # ===== 7. RODAR TUDO =====
 fontes = [buscar_gupy, buscar_greenhouse, buscar_lever,
@@ -480,7 +534,8 @@ print(f"{len(aprovadas)} aprovadas, {len(novas)} novas hoje")
 # ===== 9. SALVAR O ARQUIVO DA PÁGINA =====
 def limpar_html(txt):
     sem_tags = re.sub(r"<[^>]+>", " ", txt or "")      # tira <p>, <b>...
-    texto = re.sub(r"\s+", " ", sem_tags).strip()       # junta espaços
+    texto = html.unescape(sem_tags)                     # &nbsp; &amp; → texto normal
+    texto = re.sub(r"\s+", " ", texto).strip()          # junta espaços
     return re.sub(r" ([,.;:!?])", r"\1", texto)         # tira espaço antes de vírgula
 
 pagina = {
@@ -507,6 +562,13 @@ with open(ARQUIVO_PAGINA, "w", encoding="utf-8") as f:
     json.dump(pagina, f, ensure_ascii=False, indent=1)
 print("Página atualizada:", len(pagina["vagas"]), "vagas")
 
-# ===== 10. AVISO NO WHATSAPP (opcional) =====
+# ===== 10. AVISO NO WHATSAPP =====
 if AVISO_WHATSAPP and apikey and telefone:
-    enviar_whatsapp(f"Tem {len(novas)} vagas novas aqui. Veja na sua página {LINK_PAGINA}")
+    if novas or AVISO_SEM_NOVAS:
+        mensagem = montar_mensagem(novas, len(aprovadas))
+        print("\n--- mensagem do WhatsApp ---\n" + mensagem + "\n----------------------------")
+        enviar_whatsapp(mensagem)
+    else:
+        print("Sem vagas novas: WhatsApp não enviado (AVISO_SEM_NOVAS = False)")
+elif AVISO_WHATSAPP:
+    print("WhatsApp: faltam os secrets CALLMEBOT_PHONE / CALLMEBOT_APIKEY")
