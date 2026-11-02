@@ -1,6 +1,6 @@
 {
- "atualizado_em": "30/10/2026 às 13:43",
- "hoje": "2026-10-30",
+ "atualizado_em": "02/11/2026 às 17:22",
+ "hoje": "2026-11-02",
  "vagas": [
   {
    "id": "Lever-c34678e9-f1fb-44c6-b3a3-e04e03e7796b",
@@ -17,7 +17,7 @@
   },
   {
    "id": "Gupy-12737612",
-   "titulo": "Analista de BI Pleno TikTok Shop",
+   "titulo": "Analista de BI Pleno ",
    "empresa": "Snack Content",
    "local": "São Paulo",
    "modelo": "hybrid",
@@ -68,19 +68,6 @@
    "resumo": "Unidade de Negócio: Sem PararLocal de trabalho: Pinheiros/SPModelo de trabalho: Híbrido 2x3 (ida ao escritório duas vezes na semana)Missão da área que você irá atuar: Transformar dados em inteligência de negócio para apoiar a evolução das estratégias de cobrança e atendimento ao cliente, gerando ganhos de eficiência operacional, melhora nos índices de recuperação de crédito e aprimoramento da expe"
   },
   {
-   "id": "Gupy-12778160",
-   "titulo": "Pessoa Consultora de Pesquisa e Inteligência de mercado - Sênior ",
-   "empresa": "BIP Brasil",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-23",
-   "visto_em": "2026-10-26",
-   "link": "https://vemprabip.gupy.io/job/eyJqb2JJZCI6MTI3NzgxNjAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 3,
-   "resumo": "O Knowledge Center é a frente especializada em Pesquisa e Inteligência de Mercado, com atuação transversal às diferentes indústrias e áreas da BIP. O time apoia projetos estratégicos, desenvolvimento de novas ofertas e iniciativas comerciais por meio de estudos de mercado, benchmarking, inteligência competitiva, análise de tendências e pesquisas quantitativas e qualitativas. Buscamos um(a) Consult"
-  },
-  {
    "id": "Gupy-12793611",
    "titulo": "Analista de Inteligência de Negócios e Parcerias Pleno ",
    "empresa": "Pagaleve",
@@ -94,17 +81,30 @@
    "resumo": "A Pagaleve é uma empresa do setor de “Buy Now Pay Later”, uma startup fintech inovadora e uma das primeiras empresas a oferecer pagamento parcelado no PIX, sem juros, e sem a necessidade de usar cartão de crédito. Temos como objetivo oferecer a lojistas um novo método de pagamento, para aumentar suas vendas de um jeito simples, descomplicado e ágil, mas também temos como objetivo oferecer às pesso"
   },
   {
-   "id": "Gupy-12776807",
-   "titulo": "Analista de BI PL",
-   "empresa": "Grupo SysMap",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-10-23",
-   "visto_em": "2026-10-26",
-   "link": "https://gruposysmap.gupy.io/job/eyJqb2JJZCI6MTI3NzY4MDcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "id": "Gupy-12821510",
+   "titulo": "Analista de Dados Sênior",
+   "empresa": "Grupo Suno",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-01",
+   "visto_em": "2026-11-02",
+   "link": "https://gruposunojobs.gupy.io/job/eyJqb2JJZCI6MTI4MjE1MTAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
    "fonte": "Gupy",
    "nota": 3,
-   "resumo": "Você é apaixonado(a) por tecnologia e inovação?💡 No Grupo SysMap – que reúne SysMapSolutions, TriggoLabs e triggo.ai – acreditamos que grandes resultados nascem de pessoas incríveis.Somos uma empresa brasileira de tecnologia que, desde 1999, ajuda organizações a superar desafios complexos e acelerar sua transformação digital. Nossa atuação abrange diversos segmentos, como Telecom, Varejo, Educação"
+   "resumo": "A Suno nasceu em 2017 com um propósito claro: transformar o Brasil democratizando o acesso à informação e às soluções de investimento.Hoje, somos um ecossistema completo com frentes em Research, Consultoria, Asset, Mídias e Novos Negócios que cresce rápido, com gente que cresce junto.Aqui, cultura não é discurso. É prática.Buscamos pessoas inconformadas, curiosas e com vontade fora do comum.Gente "
+  },
+  {
+   "id": "Gupy-12797902",
+   "titulo": "Analista de Dados de Negócio Pleno (Crédito)",
+   "empresa": "Unicred",
+   "local": "",
+   "modelo": "remote",
+   "publicada": "2026-10-30",
+   "visto_em": "2026-11-02",
+   "link": "https://unicredbr.gupy.io/job/eyJqb2JJZCI6MTI3OTc5MDIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 3,
+   "resumo": "Todas as pessoas candidatas qualificadas serão consideradas para nossa vaga, sem distinção de etnia, religião, orientação sexual, identidade de gênero, idade, nacionalidade ou deficiência. Promovemos constantemente uma cultura voltada para inclusão da diversidade, incentivando nossas pessoas colaboradoras a contribuírem com o seu melhor. Nosso bem mais precioso são as pessoas, por isso a Unicred d"
   },
   {
    "id": "Gupy-12799669",
@@ -120,32 +120,6 @@
    "resumo": "A Softplan é uma das maiores empresas de software para o setor público da América Latina. Há 35 anos, desenvolvemos soluções que transformam a vida de milhões de pessoas, impactando aproximadamente 95% da população brasileira e expandindo nossa atuação também para Colômbia e Peru.Nossas tecnologias impulsionam a transformação digital nos segmentos de Infraestrutura e Obras, Processos Digitais e Ad"
   },
   {
-   "id": "Gupy-12777983",
-   "titulo": "Pricing Analyst",
-   "empresa": "Oportunidades Exclusivas",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-23",
-   "visto_em": "2026-10-26",
-   "link": "https://oportunidades-exclusivas.gupy.io/job/eyJqb2JJZCI6MTI3Nzc5ODMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 3,
-   "resumo": "Buscamos um profissional para atuar na área de Pricing, apoiando a análise e formação de preços, avaliação de rentabilidade e suporte às decisões comerciais. A posição possui forte interação com diferentes áreas da empresa, exigindo capacidade analítica, organização e colaboração.Se você gosta de ambientes dinâmicos, de trabalhar com diferentes desafios e de participar de decisões que impactam dir"
-  },
-  {
-   "id": "Gupy-12783862",
-   "titulo": "Analista de Revenue Management SR | Fasano Jardins e Itaim",
-   "empresa": "JHSF | Hospitalidade e Gastronomia",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-26",
-   "visto_em": "2026-10-27",
-   "link": "https://jhsf-fasano.gupy.io/job/eyJqb2JJZCI6MTI3ODM4NjIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 3,
-   "resumo": "Estamos em busca de um(a) Analista de Revenue Management Sênior para atuar de forma estratégica na maximização de receita e rentabilidade das nossas operações hoteleiras. Procuramos um(a) profissional analítico(a), orientado(a) por dados e com sólida experiência em hotelaria, capaz de transformar informações de mercado em ações que impulsionem resultados.Responsabilidades e atribuiçõesAnalisar e m"
-  },
-  {
    "id": "Gupy-12809841",
    "titulo": "Analista Controladoria de Trading Sr",
    "empresa": "Ipiranga",
@@ -157,32 +131,6 @@
    "fonte": "Gupy",
    "nota": 3,
    "resumo": "Já pensou em trabalhar na Ipiranga?Na Ipiranga acreditamos que pessoas com brilho nos olhos, autênticas e engajadas são nosso diferencial competitivo! Atuamos com paixão e propósito, colocando o cliente no centro das nossas decisões. Valorizamos a autonomia, a abertura e a transparência, pois temos certo de que a verdade e o respeito fortalecem relações e geram confiança. Proporcionamos para nosso"
-  },
-  {
-   "id": "Himalayas-https://himalayas.app/companies/healthfirst/jobs/sr-strategic-data-analyst",
-   "titulo": "Sr Strategic Data Analyst",
-   "empresa": "Healthfirst",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-10-30",
-   "visto_em": "2026-10-30",
-   "link": "https://himalayas.app/companies/healthfirst/jobs/sr-strategic-data-analyst?utm_source=api",
-   "fonte": "Himalayas",
-   "nota": 3,
-   "resumo": "The Senior Strategic Data Analyst is responsible for the promotion and enablement of a data-driven culture within Healthfirst Operations. The Senior Strategic Data Analyst understands the health insurance industry and their own department such that he/she can identify opportunities for the use of technology and analytics to improve efficiency within the department and across the organization. Addi"
-  },
-  {
-   "id": "Gupy-12714836",
-   "titulo": "Analista de Mercado Capitais Sênior - Ativos Digitais",
-   "empresa": "Confidencial",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-10-23",
-   "visto_em": "2026-10-26",
-   "link": "https://paginaconfidencial00.gupy.io/job/eyJqb2JJZCI6MTI3MTQ4MzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "Estamos buscando um Analista de Mercado focado nos temas das novas infraestruturas do mercado de ativos virtuais - criptoativos e tokenização - do mercado de capitais, responsável pela elaboração e execução do plano de trabalho sobre estes temas, lado regulatório, autorregulatório e de impactos no mercado.Responsabilidades e atribuições- Análise do desenvolvimento dos novos modelos de negócios lig"
   },
   {
    "id": "Gupy-12799719",
