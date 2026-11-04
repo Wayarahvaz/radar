@@ -34,6 +34,15 @@ cargos = [
     "Análise de Mercado", "Analise de Mercado",
     "Inteligência de Negócios", "Inteligencia de Negocios",
     "Corporate Intelligence",
+    "Market Insights", "Strategy & Insights", "Analista de Insights",
+    "Pesquisa de Mercado",
+
+    # Estratégia e desenvolvimento de negócios
+    "Strategy Analyst", "Analista de Estratégia", "Analista de Estrategia",
+    "Strategic Planning", "Planejamento Estratégico", "Planejamento Estrategico",
+    "Business Development", "Desenvolvimento de Negócios", "Desenvolvimento de Negocios",
+    "Novos Negócios", "Novos Negocios",
+    "Corporate Development", "M&A", "Fusões e Aquisições", "Fusoes e Aquisicoes",
 
     # Dados e BI
     "Data Analyst", "Analista de Dados", "Analista de BI", "BI Analyst",
@@ -43,10 +52,25 @@ cargos = [
     "Pricing", "Revenue Operations", "Revenue Management",
     "Sales Operations", "Business Operations", "Inteligência Comercial",
     "Inteligencia Comercial", "Supply Chain Analytics",
+    "Commercial Excellence", "Excelência Comercial", "Excelencia Comercial",
+    "Key Account",
+
+    # Suprimentos e cadeia
+    "Procurement Intelligence", "Inteligência de Suprimentos", "Inteligencia de Suprimentos",
+    "Category Manager", "Analista de Categoria", "Strategic Sourcing",
+    "Supply Chain Analyst", "Supply Risk",
 
     # Geopolítica e risco
     "Geopolitical Intelligence", "Political Intelligence", "Political Risk",
     "Analista de Geopolítica", "Analista de Geopolitica", "Risk Analyst",
+    "Country Risk", "Risco País", "Risco Pais",
+    "Government Relations", "Relações Governamentais", "Relacoes Governamentais",
+    "Relações Institucionais", "Relacoes Institucionais", "Public Affairs",
+
+    # Regulação, ESG e investimento
+    "Regulatory Affairs", "Analista de Regulação", "Analista de Regulacao",
+    "ESG Analyst", "Analista de ESG", "Sustentabilidade",
+    "Investment Promotion", "Atração de Investimentos", "Atracao de Investimentos",
 
     # Commodities e trading
     "Trading", "Commodity", "Commodities", "Analista de Commodities",
@@ -55,7 +79,12 @@ cargos = [
     "Originacao", "Chartering", "Freight Analyst", "Analista de Fretes",
     "Energy Market", "Mercado de Energia", "Metals Analyst",
     "Fertilizantes", "Minério", "Minerio",
+    "Energy Analyst", "Analista de Energia", "Mining Analyst",
+    "Mineração", "Mineracao", "Minerais Críticos", "Minerais Criticos",
+    "Energy Transition", "Transição Energética", "Transicao Energetica",
 ]
+
+cargos = list(dict.fromkeys(cargos))  # remove duplicados mantendo a ordem
 cargos_min = [c.lower() for c in cargos]
 
 proibidas = ["assistente", "assistant", "jr", "júnior", "junior", "bolsista",
