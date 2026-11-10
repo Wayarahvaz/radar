@@ -1,7 +1,20 @@
 {
- "atualizado_em": "09/11/2026 às 17:45",
- "hoje": "2026-11-09",
+ "atualizado_em": "10/11/2026 às 14:51",
+ "hoje": "2026-11-10",
  "vagas": [
+  {
+   "id": "Gupy-12582754",
+   "titulo": "Trader Sênior | Metals & Mining | Itaú BBA Trading",
+   "empresa": "Itaú Unibanco",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-09",
+   "visto_em": "2026-11-10",
+   "link": "https://vemproitau.gupy.io/job/eyJqb2JJZCI6MTI1ODI3NTQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 7,
+   "resumo": "Faça parte da Itaú BBA Trading e ajude a construir o próximo capítulo de um negócio em forte expansão dentro do maior banco privado da América Latina. O Itaú BBA reúne relacionamento, conhecimento setorial e capacidade de estruturação para atender as maiores empresas do país, com soluções customizadas e atuação em diferentes mercados e setores. Dentro desse ecossistema, a Itaú BBA Trading vem ampl"
+  },
   {
    "id": "Gupy-12824159",
    "titulo": "Analista de BI Pleno ",
@@ -27,19 +40,6 @@
    "fonte": "Gupy",
    "nota": 4,
    "resumo": "A Leega é uma empresa focada no atendimento eficiente e inovador em seus clientes. Isso não poderia ser diferente com o nosso principal combustível: as pessoas! Nossa cultura é inspiradora e nossos valores estão presentes no dia a dia: ética e transparência, excelência de qualidade, trabalho em equipe, responsabilidade econômica, social e ambiental, relações humanas e credibilidade.Buscamos profis"
-  },
-  {
-   "id": "Gupy-12828047",
-   "titulo": "Analista Sênior de Inteligência de Negócios e Performance de Portfólio - PER",
-   "empresa": "Grupo Real",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-03",
-   "visto_em": "2026-11-04",
-   "link": "https://gruporeal.gupy.io/job/eyJqb2JJZCI6MTI4MjgwNDcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 4,
-   "resumo": "Missão da posiçãoEstruturar e liderar a inteligência de negócios e a estratégia de gestão do portfólio financeiro PER, transformando dados comerciais, transacionais, de TPV, recebíveis e comportamento da carteira em diagnósticos, oportunidades e iniciativas que promovam crescimento sustentável de receita, ativação, retenção, monetização e expansão do relacionamento financeiro dos clientes com o Gr"
   },
   {
    "id": "Gupy-12827745",
@@ -92,6 +92,19 @@
    "fonte": "Gupy",
    "nota": 3,
    "resumo": "Na Topaz, não criamos apenas tecnologia. Nós transformamos o futuro do mercado financeiro. 🚀Somos um time #Multi de protagonistas que transformam ideias em soluções de impacto. Em nosso Topaz Team, fomentamos um ambiente de colaboração real onde sua curiosidade é premiada e seu potencial se expande, aprendendo com os melhores para resolver desafios complexos.Você está pronto(a) para ser protagonis"
+  },
+  {
+   "id": "Gupy-12851770",
+   "titulo": "Hering | Coordenador de Key Account (São Paulo/SP)",
+   "empresa": "Cia. Hering",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-09",
+   "visto_em": "2026-11-10",
+   "link": "https://ciahering.gupy.io/job/eyJqb2JJZCI6MTI4NTE3NzAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 3,
+   "resumo": "Somos o Básico do Brasil. Há mais de 146 anos, construímos uma história de sucesso e seguimos evoluindo por meio da conexão, do protagonismo e da construção coletiva.Aqui, cada pessoa contribui para fortalecer a nossa marca e transformar a moda brasileira.Quer fazer parte dessa história?Temos uma oportunidade para Coordenador de Key Account (São Paulo/SP). Vem com a gente!Responsabilidades e atrib"
   },
   {
    "id": "Gupy-12794736",
@@ -185,6 +198,19 @@
    "resumo": "A Pagaleve é uma empresa do setor de \"Buy Now Pay Later\", uma startup fintech inovadora e uma das primeiras empresas a oferecer pagamento parcelado no PIX, sem juros, e sem a necessidade de usar cartão de crédito. Temos como objetivo oferecer a lojistas um novo método de pagamento, para aumentar suas vendas de um jeito simples, descomplicado e ágil, mas também temos como objetivo oferecer às pesso"
   },
   {
+   "id": "Gupy-12858471",
+   "titulo": "Category Manager - SOLENIS",
+   "empresa": "Michael Page | Enterprise Solutions",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-10",
+   "visto_em": "2026-11-10",
+   "link": "https://es-michaelpagebr.gupy.io/job/eyJqb2JJZCI6MTI4NTg0NzEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 2,
+   "resumo": "We are looking for a Senior Category Manager to lead the development and execution of strategic sourcing initiatives across assigned chemical categories. This role combines category strategy, market intelligence, supplier management, and commercial leadership to drive long-term value creation, cost optimization, supply continuity, and business growth. The position will work closely with Commercial"
+  },
+  {
    "id": "Gupy-12809235",
    "titulo": "Analista Global Relações Governamentais e Institucionais Sr",
    "empresa": "Alpargatas",
@@ -196,19 +222,6 @@
    "fonte": "Gupy",
    "nota": 2,
    "resumo": "Você é daquelas pessoas que gosta de jogar junto, ficar por dentro das inovações, solucionar problemas e aprender fazendo?Na Alpargatas, com responsabilidade socioambiental e visão de futuro, levamos soluções únicas a uma escala global. Por isso, buscamos pessoas que encaram os desafios de uma forma simples, leve e direto ao ponto. Promovemos um ambiente de muita colaboração e que tenha como premi"
-  },
-  {
-   "id": "Gupy-12824716",
-   "titulo": "Analista de Sustentabilidade Sr ",
-   "empresa": "Vagas Unimed do Brasil",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-03",
-   "visto_em": "2026-11-04",
-   "link": "https://unimed-brasil.gupy.io/job/eyJqb2JJZCI6MTI4MjQ3MTYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "Faça parte do maior sistema de cooperativas de saúde do mundo!Nosso propósito é cuidar de pessoas, prezando pela diversidade e enxergando o valor único de cada um.Buscamos a excelência, exploramos todo o nosso potencial e focamos na melhoria contínua para surpreender positivamente e proporcionar uma boa experiência ao cliente. Reconhecemos nossas emoções, consideramos o impacto que geramos no outr"
   },
   {
    "id": "Gupy-12850156",
@@ -302,19 +315,6 @@
    "resumo": "A Unidas, integrante do grupo Brookfield, é uma das maiores empresas do setor de mobilidade no Brasil.Conta com cerca de 100 mil ativos entre veículos leves, caminhões, máquinas e equipamentos pesados, e oferece uma plataforma completa de soluções de gestão e locação de veículos, operações e manutenção, trazendo economia e praticidade para pessoas e empresas em todo o país.Conta também com mais de"
   },
   {
-   "id": "RemoteOK-1137674",
-   "titulo": "Sales Operations Analyst",
-   "empresa": "Calabrio",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-03",
-   "visto_em": "2026-11-04",
-   "link": "https://remoteOK.com/remote-jobs/remote-sales-operations-analyst-calabrio-1137674",
-   "fonte": "RemoteOK",
-   "nota": 1,
-   "resumo": "Location: US- Remote. Must be in EST or CT time zone only. VerintÂ is an innovative, fast-paced, growing software company that delivers integrated workforce optimization software for todayâs multi-channel contact centers. We are in an exciting growing phase and now is an excellent time to join and help us develop even further as a company.Â VerintÂ is looking for aÂ Sales Operations AnalystÂ to "
-  },
-  {
    "id": "Gupy-12857680",
    "titulo": "Gerente de Contratos e Novos Negócios | Edificações e Infraestrutura",
    "empresa": "Método Grupo",
@@ -339,6 +339,32 @@
    "fonte": "Gupy",
    "nota": 0,
    "resumo": "Unidade de Negócio: Sem Parar Local de trabalho: A definir Modelo de trabalho: HíbridoMissão da área que você irá atuar:Identificar novas oportunidades de crescimento para a Sem Parar, desenvolvendo propostas de valor, produtos e modelos de negócio que ampliem a geração de receita e a relevância da marca.Objetivos do cargo que você irá atuar:Liderar a exploração e validação de novas oportunidades "
+  },
+  {
+   "id": "Gupy-12860058",
+   "titulo": "Business Analyst | Mid (Remoto)",
+   "empresa": "Compass UOL",
+   "local": "",
+   "modelo": "remote",
+   "publicada": "2026-11-09",
+   "visto_em": "2026-11-10",
+   "link": "https://compass.gupy.io/job/eyJqb2JJZCI6MTI4NjAwNTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 0,
+   "resumo": ".Responsabilidades e atribuiçõesLiderar dinâmicas de facilitação e mapeamento de processos com stakeholders, identificando necessidades reais de negócio, regras operacionais e oportunidades de melhoria;Estruturar, documentar e manter requisitos funcionais e não-funcionais, regras de negócio e critérios de aceite com clareza para o time de desenvolvimento;Mapear e especificar fluxos de conciliação "
+  },
+  {
+   "id": "RemoteOK-1137707",
+   "titulo": "Web3 Business Development",
+   "empresa": "CertiK",
+   "local": "",
+   "modelo": "remote",
+   "publicada": "2026-11-09",
+   "visto_em": "2026-11-10",
+   "link": "https://remoteOK.com/remote-jobs/remote-web3-business-development-certik-1137707",
+   "fonte": "RemoteOK",
+   "nota": 0,
+   "resumo": "About the Company Born from groundbreaking research at Columbia University and Yale University, CertiK is a leading Web3 security company focused on securing blockchain protocols, smart contracts, and decentralized applications through cutting-edge security research, formal verification, and AI-powered technology. Founded in 2017 and headquartered in New York City, CertiK provides end-to-end secur"
   }
  ]
 }
