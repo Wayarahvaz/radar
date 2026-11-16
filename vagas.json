@@ -1,20 +1,7 @@
 {
- "atualizado_em": "13/11/2026 às 14:45",
- "hoje": "2026-11-13",
+ "atualizado_em": "16/11/2026 às 17:29",
+ "hoje": "2026-11-16",
  "vagas": [
-  {
-   "id": "Gupy-12582754",
-   "titulo": "Trader Sênior | Metals & Mining | Itaú BBA Trading",
-   "empresa": "Itaú Unibanco",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-10",
-   "link": "https://vemproitau.gupy.io/job/eyJqb2JJZCI6MTI1ODI3NTQsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 7,
-   "resumo": "Faça parte da Itaú BBA Trading e ajude a construir o próximo capítulo de um negócio em forte expansão dentro do maior banco privado da América Latina. O Itaú BBA reúne relacionamento, conhecimento setorial e capacidade de estruturação para atender as maiores empresas do país, com soluções customizadas e atuação em diferentes mercados e setores. Dentro desse ecossistema, a Itaú BBA Trading vem ampl"
-  },
   {
    "id": "Gupy-12868755",
    "titulo": "Analista SR de Market Intelligence & Analytics (Inteligência de Mercado)",
@@ -40,6 +27,19 @@
    "fonte": "Gupy",
    "nota": 6,
    "resumo": "Somos a Copa Energia, uma empresa brasileira, referência em soluções energéticas e à frente das próximas inovações do setor para construir um amanhã melhor a partir de uma matriz energética mais limpa. Através das nossas duas marcas, Copagaz e Liquigás, respondemos por 25% da distribuição de Gás Liquefeito de Petróleo (GLP) do Brasil. Possuímos operações em 25 estados e Distrito Federal e cerca de"
+  },
+  {
+   "id": "Gupy-12894342",
+   "titulo": "Analista de Revenue Management e Performance Comercial Pleno - Acessível também para pessoas com deficiência ",
+   "empresa": "GOL Linhas Aéreas",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-15",
+   "visto_em": "2026-11-16",
+   "link": "https://golcarreiras.gupy.io/job/eyJqb2JJZCI6MTI4OTQzNDIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 6,
+   "resumo": "Estamos em busca de profissionais com experiência em Performance Comercial - RM para integrar nosso Time de Águias. Se você busca desafios e um ambiente inclusivo, diverso e estimulante, essa é a oportunidade certa para decolar na sua carreira!Responsabilidades e atribuiçõesOs desafios que aguardam por você no próximo destino são:Atuar na execução de estratégias, visando à maximização de receita, "
   },
   {
    "id": "Gupy-12864777",
@@ -94,17 +94,56 @@
    "resumo": "De acordo com o nosso compromisso com a diversidade e a inclusão, estamos encorajados a receber candidaturas de mulheres para esta posição. Por isso, encorajamos todas as pessoas qualificadas a se candidatarem, independentemente de gênero, identidade ou qualquer outra caraterística, e se juntarem ao nosso time para a vaga Consultor(a) de Estratégia Comercial & Inteligência de Mercado responsável p"
   },
   {
-   "id": "Gupy-12845717",
-   "titulo": "Analista de Dados Funcional Sênior(Mercado Financeiro)",
-   "empresa": "Leega Consultoria",
+   "id": "Gupy-12896233",
+   "titulo": "Power BI Data Analyst | Senior (Remote)",
+   "empresa": "Compass UOL",
    "local": "",
    "modelo": "remote",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-09",
-   "link": "https://leega.gupy.io/job/eyJqb2JJZCI6MTI4NDU3MTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "publicada": "2026-11-16",
+   "visto_em": "2026-11-16",
+   "link": "https://compass.gupy.io/job/eyJqb2JJZCI6MTI4OTYyMzMsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
    "fonte": "Gupy",
    "nota": 4,
-   "resumo": "A Leega é uma empresa focada no atendimento eficiente e inovador em seus clientes. Isso não poderia ser diferente com o nosso principal combustível: as pessoas! Nossa cultura é inspiradora e nossos valores estão presentes no dia a dia: ética e transparência, excelência de qualidade, trabalho em equipe, responsabilidade econômica, social e ambiental, relações humanas e credibilidade.Buscamos profis"
+   "resumo": ".Responsabilidades e atribuições Desenvolvimento e manutenção de dashboards e relatórios gerenciais em Power BI, utilizando visualizações avançadas para apoiar a tomada de decisão;Extração, transformação e carga de dados (ETL), garantindo qualidade, consistência e eficiência das informações;Construção de modelos de dados e otimização de consultas para análise de grandes volumes de informações;Dese"
+  },
+  {
+   "id": "Gupy-12900217",
+   "titulo": "Analista de Dados Sr. (Custo e Receita)",
+   "empresa": "Unimed CNU",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-16",
+   "visto_em": "2026-11-16",
+   "link": "https://unimedcnu.gupy.io/job/eyJqb2JJZCI6MTI5MDAyMTcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 4,
+   "resumo": "Validar e acompanhar projetos de dados da companhia, utilizando profundo conhecimento técnico e analítico, visando garantir que todos os custos e receitas sejam alocados, gerados e reportados com total precisão e conformidade com as regras de negócio. Responsabilidades e atribuições Analisar e cruzar grandes volumes de dados financeiros e assistenciais para validar a exatidão, consistência e a cor"
+  },
+  {
+   "id": "Gupy-12897167",
+   "titulo": "Analista de FP&A, Performance & Pricing Pleno ",
+   "empresa": "Vagas Banco Sofisa",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-16",
+   "visto_em": "2026-11-16",
+   "link": "https://bancosofisa.gupy.io/job/eyJqb2JJZCI6MTI4OTcxNjcsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 4,
+   "resumo": "Orgulhosamente, somos um dos principais bancos do Brasil. Aqui, não nos contentamos com o status quo. Estamos sempre em busca de melhorias, aprendizado contínuo e inovação. Procuramos pessoas que sejam apaixonadas por mudanças, que tenham vontade de aprender e queiram crescer no mercado financeiro. Se você se identifica, venha fazer parte do nosso time!Responsabilidades e atribuições Responsabilid"
+  },
+  {
+   "id": "Gupy-12870081",
+   "titulo": "Analista Pricing Marketing Sr",
+   "empresa": "Vem Pra Vivo",
+   "local": "São Paulo",
+   "modelo": "hybrid",
+   "publicada": "2026-11-16",
+   "visto_em": "2026-11-16",
+   "link": "https://vivo.gupy.io/job/eyJqb2JJZCI6MTI4NzAwODEsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "fonte": "Gupy",
+   "nota": 4,
+   "resumo": "VP Inovação e Novos Negócios; Diretoria de Marketing Consumer Electronics; Ger Marketing Bem-estar045Local: EcoBerrini São Paulo Objetivo do cargo: Desenvolver e implementar estratégias de precificação inovadoras para eletrônicos, impulsionando a rentabilidade do negócio e contribuindo para a transformação da Vivo em um varejo de tecnologia. Responsabilidades e atribuições Você será responsável pe"
   },
   {
    "id": "Gupy-12547579",
@@ -133,43 +172,17 @@
    "resumo": "Você é apaixonado(a) por tecnologia e inovação?💡 No Grupo SysMap – que reúne SysMapSolutions, TriggoLabs e triggo.ai – acreditamos que grandes resultados nascem de pessoas incríveis.Somos uma empresa brasileira de tecnologia que, desde 1999, ajuda organizações a superar desafios complexos e acelerar sua transformação digital. Nossa atuação abrange diversos segmentos, como Telecom, Varejo, Educação"
   },
   {
-   "id": "Gupy-12851718",
-   "titulo": "Analista de Dados e Inteligência Antifraude Sênior",
-   "empresa": "Sem Parar Corpay",
+   "id": "Gupy-12861942",
+   "titulo": "Analista de BI Sênior",
+   "empresa": "Belliz Company",
    "local": "São Paulo",
    "modelo": "hybrid",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://semparar.gupy.io/job/eyJqb2JJZCI6MTI4NTE3MTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
+   "publicada": "2026-11-10",
+   "visto_em": "2026-11-16",
+   "link": "https://belliz.gupy.io/job/eyJqb2JJZCI6MTI4NjE5NDIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
    "fonte": "Gupy",
    "nota": 3,
-   "resumo": "Unidade de Negócio: Sem PararLocal de trabalho: Pinheiros/São PauloModelo de trabalho: Híbrido 2x3 (ida ao escritório duas vezes na semana)Objetivos do cargo que você irá atuar: Desenvolver, implementar e sustentar soluções de monitoramento transacional e inteligência antifraude, por meio de engenharia e análise de dados, estatística, automações e detecção de anomalias, para identificar e prevenir"
-  },
-  {
-   "id": "Gupy-12764352",
-   "titulo": "BEMOL SERVIÇOS FINANCEIROS | Analista de Dados e Analytics III",
-   "empresa": "Bemol Digital",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://bemoldigital.gupy.io/job/eyJqb2JJZCI6MTI3NjQzNTIsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 3,
-   "resumo": "Faça Parte da Revolução Digital e Financeira na Amazônia com a Bemol!Na Bemol, estamos comprometidos em transformar a experiência dos nossos clientes e o mercado de tecnologia e serviços financeiros no Norte do Brasil. Desde 2020, a Bemol Serviços Financeiros (BSF) atua como a frente financeira das Lojas Bemol, oferecendo soluções integradas como a Conta Bemol e Crédito (Empréstimo Pessoal e Empré"
-  },
-  {
-   "id": "Gupy-12733636",
-   "titulo": "Sr Business Analyst",
-   "empresa": "Topaz Brasil",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-09",
-   "link": "https://topazbrasil.gupy.io/job/eyJqb2JJZCI6MTI3MzM2MzYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 3,
-   "resumo": "Na Topaz, não criamos apenas tecnologia. Nós transformamos o futuro do mercado financeiro. 🚀Somos um time #Multi de protagonistas que transformam ideias em soluções de impacto. Em nosso Topaz Team, fomentamos um ambiente de colaboração real onde sua curiosidade é premiada e seu potencial se expande, aprendendo com os melhores para resolver desafios complexos.Você está pronto(a) para ser protagonis"
+   "resumo": "A Belliz Company busca um(a) Analista de BI Sênior com sólida experiência em Qlik Sense para integrar nosso time de Tecnologia e Inovação.Esse profissional será responsável pela sustentação, desenvolvimento e evolução das soluções de Business Intelligence da companhia, garantindo a disponibilidade, confiabilidade, integridade e performance das informações utilizadas nas decisões estratégicas, táti"
   },
   {
    "id": "Gupy-12799400",
@@ -211,19 +224,6 @@
    "resumo": "Analista Novos Negócios SR - M&ASe você se identifica com nosso propósito de promover acesso à saúde para que todas as pessoas possam viver mais e melhor e quer trabalhar em uma empresa empreendedora, inovadora, ética e sustentável, queremos te convidar para participar de nosso processo seletivo.Venha fazer parte da Eurofarma, uma das melhores empresas para trabalhar do país, segundo o #GPTW!Valor"
   },
   {
-   "id": "Gupy-12851589",
-   "titulo": "Analista de Produto para Novos Negócios Sênior",
-   "empresa": "Sem Parar Corpay",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://semparar.gupy.io/job/eyJqb2JJZCI6MTI4NTE1ODksInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "Unidade de Negócio: Sem Parar EmpresasLocal de trabalho: Pinheiros/SPModelo de trabalho: Híbrido 2x3 (ida ao escritório duas vezes na semana)Missão da área que você irá atuar: Desenvolver e evoluir produtos e serviços para o ecossistema de clientes Sem Parar, transformando necessidades de clientes, oportunidades de mercado e objetivos estratégicos em soluções escaláveis, rentáveis e com uma experi"
-  },
-  {
    "id": "Gupy-12879707",
    "titulo": "Hitss | Analista de Dados PL",
    "empresa": "Hitss Brasil",
@@ -237,19 +237,6 @@
    "resumo": "Na Hitss, a inovação é o nosso combustível, a curiosidade é o nosso motor e o respeito pelo cliente é o nosso guia. Se você é movido pela paixão em criar soluções tecnológicas disruptivas, se busca constantemente desafios que ampliem os limites do possível e se acredita que colocar o cliente em primeiro lugar é a chave para o sucesso, então você está no lugar certo.Queremos pessoas que se destaque"
   },
   {
-   "id": "Gupy-12851445",
-   "titulo": "Key Account Sr. (Foco em Onboarding)",
-   "empresa": "Pagaleve",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://pagaleve.gupy.io/job/eyJqb2JJZCI6MTI4NTE0NDUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "A Pagaleve é uma empresa do setor de \"Buy Now Pay Later\", uma startup fintech inovadora e uma das primeiras empresas a oferecer pagamento parcelado no PIX, sem juros, e sem a necessidade de usar cartão de crédito. Temos como objetivo oferecer a lojistas um novo método de pagamento, para aumentar suas vendas de um jeito simples, descomplicado e ágil, mas também temos como objetivo oferecer às pesso"
-  },
-  {
    "id": "Gupy-12858471",
    "titulo": "Category Manager - SOLENIS",
    "empresa": "Michael Page | Enterprise Solutions",
@@ -261,19 +248,6 @@
    "fonte": "Gupy",
    "nota": 2,
    "resumo": "We are looking for a Category Manager to lead the development and execution of strategic sourcing initiatives across assigned chemical categories. This role combines category strategy, market intelligence, supplier management, and commercial leadership to drive long-term value creation, cost optimization, supply continuity, and business growth. The position will work closely with Commercial, Opera"
-  },
-  {
-   "id": "Gupy-12809235",
-   "titulo": "Analista Global Relações Governamentais e Institucionais Sr",
-   "empresa": "Alpargatas",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://alpargatas.gupy.io/job/eyJqb2JJZCI6MTI4MDkyMzUsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 2,
-   "resumo": "Você é daquelas pessoas que gosta de jogar junto, ficar por dentro das inovações, solucionar problemas e aprender fazendo?Na Alpargatas, com responsabilidade socioambiental e visão de futuro, levamos soluções únicas a uma escala global. Por isso, buscamos pessoas que encaram os desafios de uma forma simples, leve e direto ao ponto. Promovemos um ambiente de muita colaboração e que tenha como premi"
   },
   {
    "id": "Gupy-12882645",
@@ -302,32 +276,6 @@
    "resumo": "A Ploomes é a maior empresa de CRM da América Latina.Nosso objetivo é centralizar toda a operação comercial possibilitando a visão 360º dos clientes. 🌎Para isso, desenvolvemos um produto que combina robustez e facilidade de implementação, utilização e manutenção, com vários módulos que vão auxiliar o dia a dia do time comercial.Acreditamos na autonomia, na força das nossas conexões e na atitude qu"
   },
   {
-   "id": "Gupy-12850156",
-   "titulo": "Business Development Representative (BDR) | Remoto ",
-   "empresa": "Elifegroup",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://elifegroup.gupy.io/job/eyJqb2JJZCI6MTI4NTAxNTYsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 1,
-   "resumo": "A Cxpress é uma plataforma de Gestão do Atendimento ao Cliente que conecta WhatsApp, Instagram, Facebook, E-mail e Telefonia no mesmo painel de trabalho, reunindo conversas e o histórico dos clientes em um só lugar. Com IA, responde dúvidas, resolve demandas de suporte e vendas, atende fora do horário comercial e libera a equipe para casos mais complexos. Para a gestão, mostra volumes, desempenho "
-  },
-  {
-   "id": "Gupy-12851280",
-   "titulo": "Analista de Inteligência Comercial",
-   "empresa": "Empresa Confidencial",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-06",
-   "visto_em": "2026-11-09",
-   "link": "https://empresaconfidencialti.gupy.io/job/eyJqb2JJZCI6MTI4NTEyODAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 1,
-   "resumo": "Estamos buscando um(a) profissional para estruturar a inteligência comercial de uma empresa de tecnologia. Você vai entender o mercado, apoiar a definição de onde e como atuar para gerar demanda e fornecer ao time comercial listas qualificadas e análises que sustentem a estratégia de captação. Responsabilidades e atribuiçõesDia a Dia: · Mapear segmentos, setores e contas-alvo com maior potencial p"
-  },
-  {
    "id": "Gupy-12889364",
    "titulo": "Analista de Mercado PL",
    "empresa": "Eurofarma",
@@ -339,45 +287,6 @@
    "fonte": "Gupy",
    "nota": 0,
    "resumo": "Analista de Mercado PLSe você se identifica com nosso propósito de promover acesso à saúde para que todas as pessoas possam viver mais e melhor e quer trabalhar em uma empresa empreendedora, inovadora, ética e sustentável, queremos te convidar para participar de nosso processo seletivo.Venha fazer parte da Eurofarma, uma das melhores empresas para trabalhar do país, segundo o #GPTW!Valorizamos nos"
-  },
-  {
-   "id": "Gupy-12857680",
-   "titulo": "Gerente de Contratos e Novos Negócios | Edificações e Infraestrutura",
-   "empresa": "Método Grupo",
-   "local": "São Paulo",
-   "modelo": "hybrid",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-09",
-   "link": "https://metodo.gupy.io/job/eyJqb2JJZCI6MTI4NTc2ODAsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 0,
-   "resumo": "Você fará parte do time de Contratos e Novos Negócios.Responsabilidades e atribuiçõesDefinir e executar a estratégia de novos negócios para os segmentos de edificações e infraestrutura.Prospectar ativamente novos clientes, parcerias estratégicas e oportunidades de curto e longo prazo.Atuar na abertura de mercado, mapeando projetos, investimentos, players e tendências do setor.Apoiar nos processos "
-  },
-  {
-   "id": "Gupy-12860058",
-   "titulo": "Business Analyst | Mid (Remoto)",
-   "empresa": "Compass UOL",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-10",
-   "link": "https://compass.gupy.io/job/eyJqb2JJZCI6MTI4NjAwNTgsInNvdXJjZSI6Imd1cHlfcG9ydGFsIn0=",
-   "fonte": "Gupy",
-   "nota": 0,
-   "resumo": ".Responsabilidades e atribuiçõesLiderar dinâmicas de facilitação e mapeamento de processos com stakeholders, identificando necessidades reais de negócio, regras operacionais e oportunidades de melhoria;Estruturar, documentar e manter requisitos funcionais e não-funcionais, regras de negócio e critérios de aceite com clareza para o time de desenvolvimento;Mapear e especificar fluxos de conciliação "
-  },
-  {
-   "id": "RemoteOK-1137707",
-   "titulo": "Web3 Business Development",
-   "empresa": "CertiK",
-   "local": "",
-   "modelo": "remote",
-   "publicada": "2026-11-09",
-   "visto_em": "2026-11-10",
-   "link": "https://remoteOK.com/remote-jobs/remote-web3-business-development-certik-1137707",
-   "fonte": "RemoteOK",
-   "nota": 0,
-   "resumo": "About the Company Born from groundbreaking research at Columbia University and Yale University, CertiK is a leading Web3 security company focused on securing blockchain protocols, smart contracts, and decentralized applications through cutting-edge security research, formal verification, and AI-powered technology. Founded in 2017 and headquartered in New York City, CertiK provides end-to-end secur"
   }
  ]
 }
